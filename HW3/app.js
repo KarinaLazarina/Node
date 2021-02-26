@@ -1,4 +1,4 @@
-//Вам необхідно реалізувати CRUD на ваших юзерів.
+// Вам необхідно реалізувати CRUD на ваших юзерів.
 // Мають бути реалізовані такі методи.
 // Done 1) Create user
 // Done 2) Get all users
@@ -21,4 +21,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', apiRouter);
 
-app.listen(8000, ()=>{console.log('Listen port 8000!')});
+app.listen(8000, () => { console.log('Listen port 8000!'); });
