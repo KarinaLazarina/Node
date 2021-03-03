@@ -4,17 +4,19 @@ const errMessage = require('../errors/errorMessages');
 module.exports = {
     checkUser: (req, res, next) => {
         try {
-            const user = req.body;
+            const {
+                passwd, mail, preferL = 'en'
+            } = req.body;
 
-            if (user.passwd.length < 4) {
-                throw new Error(errMessage.WEAK_PASSWORD);
+            if (passwd.length < 4) {
+                throw new Error(errMessage.WEAK_PASSWORD[preferL]);
             }
 
-            if (!user.mail.includes('@')) {
-                throw new Error(errMessage.INVALID_EMAIL);
+            if (!mail.includes('@')) {
+                throw new Error(errMessage.INVALID_EMAIL[preferL]);
             }
 
-            user.name = user.name[0].toUpperCase() + user.name.slice(1, user.name.length).toLowerCase();
+            // name = name[0].toUpperCase() + name.slice(1, name.length).toLowerCase();
 
             next();
         } catch (e) {
